@@ -1,7 +1,7 @@
 # KIT PLM CAD
 In this course we built a telepresence robot with the Lego Mindstorm EV3 system.
 
-
+![Kerberos Image](./doc/Kerberos.png)
 
 As the operating system we used [ev3dev](https://www.ev3dev.org/).
 
