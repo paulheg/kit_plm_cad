@@ -5,7 +5,6 @@ import 'package:kerberos_control/api/connection_service.dart';
 import 'package:kerberos_control/settings.dart';
 import 'package:kerberos_control/widgets/vision_controls.dart';
 import 'package:provider/provider.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 class ControlPage extends StatefulWidget {
   final String robotId;
@@ -72,7 +71,7 @@ class _ControlPageState extends State<ControlPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: VisionControls(snapshot.data!),
                           ),
                           Padding(

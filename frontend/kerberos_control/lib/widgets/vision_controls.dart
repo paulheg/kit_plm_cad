@@ -5,15 +5,13 @@ import 'package:kerberos_control/widgets/repeat_on_tap.dart';
 class VisionControls extends StatefulWidget {
   final ConnectionService service;
 
-  VisionControls(this.service, {super.key});
+  const VisionControls(this.service, {super.key});
 
   @override
   State<VisionControls> createState() => _VisionControlsState();
 }
 
 class _VisionControlsState extends State<VisionControls> {
-  double _height = 0;
-  double _tilt = 0;
   bool _autoTilt = true;
 
   @override

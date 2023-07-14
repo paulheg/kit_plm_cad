@@ -198,6 +198,7 @@ func (r *robot) drive(x, y float32) {
 
 }
 
+// TODO: https://robotics.stackexchange.com/questions/20347/how-do-i-convert-centre-returning-joystick-values-to-dual-hobby-motor-direction
 func JoyconToLeftRight(x, y float32) (left, right float32) {
 
 	const sqh = float32(math.Sqrt2 / 2)

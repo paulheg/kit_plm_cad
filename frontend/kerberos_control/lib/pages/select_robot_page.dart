@@ -15,23 +15,23 @@ class SelectRobotPage extends StatefulWidget {
 class _SelectRobotPageState extends State<SelectRobotPage> {
   @override
   Widget build(BuildContext context) {
-    List<ConnectionStatus> _connections = [];
+    List<ConnectionStatus> connections = [];
 
     Future<void> refresh(String host) async {
       var newConns = await getConnectionStatusList(host);
 
       setState(() {
-        _connections = newConns;
+        connections = newConns;
       });
     }
 
-    Widget _getListView(Settings settings) {
+    Widget getListView(Settings settings) {
       return RefreshIndicator(
         onRefresh: () => refresh(settings.host),
         child: ListView.builder(
-          itemCount: _connections.length,
+          itemCount: connections.length,
           itemBuilder: (context, index) {
-            var conn = _connections[index];
+            var conn = connections[index];
 
             return GestureDetector(
               onTap: () {
@@ -81,7 +81,7 @@ class _SelectRobotPageState extends State<SelectRobotPage> {
       );
     }
 
-    Widget _getMessageCard(String message) {
+    Widget getMessageCard(String message) {
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -117,14 +117,14 @@ class _SelectRobotPageState extends State<SelectRobotPage> {
             future: getConnectionStatusList(settings.host),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                _connections = snapshot.data!;
+                connections = snapshot.data!;
 
-                return _getListView(settings);
+                return getListView(settings);
               } else if (snapshot.hasError) {
-                _getMessageCard("Error while loading robots");
+                getMessageCard("Error while loading robots");
               }
 
-              return _getMessageCard("Loading");
+              return getMessageCard("Loading");
             },
           ),
         );

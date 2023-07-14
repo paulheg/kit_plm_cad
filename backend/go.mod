@@ -3,10 +3,13 @@ module github.com/paulheg/kit_plm_cad/backend
 go 1.20
 
 require (
+	github.com/gofiber/fiber/v2 v2.47.0
+	github.com/gofiber/websocket/v2 v2.2.1
+)
+
+require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/fasthttp/websocket v1.5.3 // indirect
-	github.com/gofiber/fiber/v2 v2.47.0 // indirect
-	github.com/gofiber/websocket/v2 v2.2.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/klauspost/compress v1.16.6 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -20,6 +23,5 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.48.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
 	golang.org/x/sys v0.9.0 // indirect
 )
