@@ -2,7 +2,6 @@ package robot
 
 import (
 	"fmt"
-	"math"
 	"time"
 
 	"github.com/ev3go/ev3"
@@ -30,6 +29,8 @@ type robot struct {
 	stopped bool
 
 	autoTilt bool
+
+	joystick JoystickStrategy
 }
 
 // TiltDown implements Robot.
@@ -60,7 +61,7 @@ func (r *robot) MoveUp() {
 	r.heightDrive.Command(string(Stop))
 }
 
-func New() (Robot, error) {
+func New(joystick JoystickStrategy) (Robot, error) {
 
 	left, err := getTachoMotor(D, Large)
 	if err != nil {
@@ -105,6 +106,7 @@ func New() (Robot, error) {
 		speaker:     speaker,
 		stopped:     true,
 		maxLarge:    float32(left.MaxSpeed() / 10),
+		joystick:    joystick,
 	}, nil
 
 }
@@ -191,20 +193,9 @@ func (r *robot) Move(x float32, y float32) {
 
 func (r *robot) drive(x, y float32) {
 
-	left, right := JoyconToLeftRight(x, y)
+	left, right := r.joystick(x, y)
 
 	r.leftDrive.SetSpeedSetpoint(int(left * r.maxLarge)).Command(string(RunForever))
 	r.rightDrive.SetSpeedSetpoint(int(right * r.maxLarge)).Command(string(RunForever))
 
-}
-
-// TODO: https://robotics.stackexchange.com/questions/20347/how-do-i-convert-centre-returning-joystick-values-to-dual-hobby-motor-direction
-func JoyconToLeftRight(x, y float32) (left, right float32) {
-
-	const sqh = float32(math.Sqrt2 / 2)
-
-	left = x*sqh + y*sqh
-	right = -x*sqh + y*sqh
-
-	return
 }

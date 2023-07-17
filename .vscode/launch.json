@@ -23,6 +23,22 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "Launch Robot Firmware",
+            "type": "go",
+            "cwd": "robot/",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/robot/cmd"
+        },
+        {
+            "name": "Launch Backend",
+            "type": "go",
+            "cwd": "backend/",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/backend/cmd"
         }
     ]
 }

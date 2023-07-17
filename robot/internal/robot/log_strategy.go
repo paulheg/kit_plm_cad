@@ -33,7 +33,7 @@ func (*LoggerStrategy) MoveUp() {
 
 // Move implements Strategy.
 func (*LoggerStrategy) Move(x float32, y float32) {
-	left, right := JoyconToLeftRight(x, y)
+	left, right := JoystickFixFlutterData(JoystickRotationStrategy)(x, y)
 	log.Printf("X: %f, Y: %f", x, y)
 	log.Printf("Left: %f, Right: %f", left, right)
 }

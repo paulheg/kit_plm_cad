@@ -10,10 +10,11 @@ import (
 
 func main() {
 
-	robot, err := robot.New()
+	robot, err := robot.New(robot.JoystickFixFlutterData(robot.JoystickPolarStrategy(3)))
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer robot.Dispose()
 
 	net := network.New(network.Configuration{
 		Host:    "robots.hegenberg.dev",
@@ -26,5 +27,4 @@ func main() {
 		// parser.Parse(message, &robot.LoggerStrategy{})
 	})
 
-	robot.Dispose()
 }
