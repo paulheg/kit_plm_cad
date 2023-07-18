@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	robot, err := robot.New(robot.JoystickFixFlutterData(robot.JoystickPolarStrategy(3)))
+	robot, err := robot.New(robot.JoystickFixFlutterData(robot.JoystickPolarStrategy(2)))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -19,7 +19,7 @@ func main() {
 	net := network.New(network.Configuration{
 		Host:    "robots.hegenberg.dev",
 		Secure:  true,
-		Channel: "ws/robot/Paul",
+		Channel: "ws/robot/Cerberus",
 	})
 
 	net.Run(func(message string) {
